@@ -4,8 +4,8 @@ import Http
 import Json.Decode as Decode
 import Json.Decode.Pipeline exposing (decode, required)
 import Json.Encode as Encode
+import Models exposing (Player, PlayerId)
 import Msgs exposing (Msg)
-import Models exposing (PlayerId, Player)
 import RemoteData
 
 
@@ -18,12 +18,12 @@ fetchPlayers =
 
 fetchPlayersUrl : String
 fetchPlayersUrl =
-    "http://localhost:4000/players"
+    "http://localhost:3000/players?level=gte.4&amp;order=level.desc,name.asc"
 
 
 savePlayerUrl : PlayerId -> String
 savePlayerUrl playerId =
-    "http://localhost:4000/players/" ++ playerId
+    "http://localhost:3000/players/id=eq." ++ playerId
 
 
 savePlayerRequest : Player -> Http.Request Player
@@ -71,4 +71,4 @@ playerEncoder player =
             , ( "level", Encode.int player.level )
             ]
     in
-        Encode.object attributes
+    Encode.object attributes
