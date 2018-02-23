@@ -20,7 +20,7 @@
   "scripts": {
     "api": "node api.js",
     "build": "webpack",
-    "client": "webpack-dev-server --port 3000",
+    "client": "webpack-dev-server --port 8080",
     "start": "nf start"
   },
   "repository": {
