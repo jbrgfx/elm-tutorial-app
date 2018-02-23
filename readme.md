@@ -17,7 +17,7 @@ yarn
 ## This version is 
 
 - Adapted to fetch PostgreSQL data via postgRest, a haskell warp web app.
-- The Elm code contains any supported API call towhich the application has been granted privileges in the PostgreSQL database.
+- The Elm code contains any supported API call to which the application has been granted privileges in the PostgreSQL database.
 - Elm only needs to REST endpoint.
 - [read the docs](https://postgrest.com/en/v4.3/api.html) and download the binary.
 
