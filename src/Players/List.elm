@@ -1,7 +1,7 @@
 module Players.List exposing (..)
 
 import Html exposing (..)
-import Html.Attributes exposing (class, href)
+import Html.Attributes exposing (class, href, style)
 import Models exposing (Player)
 import Msgs exposing (Msg)
 import RemoteData exposing (WebData)
@@ -13,6 +13,22 @@ view response =
     div []
         [ nav
         , maybeList response
+        , showQuery
+        ]
+
+
+indentStyle =
+    style
+        [ ( "padding", "20px" )
+        , ( "margin-left", "10px" )
+        , ( "background-color", "grey" )
+        , ( "color", "white" )
+        ]
+
+
+showQuery =
+    div [ indentStyle ]
+        [ Html.text "  Query to postgRest: /players?level=gte.4&amp;order=level.desc,name.asc"
         ]
 
 
@@ -72,8 +88,8 @@ editBtn player =
         path =
             playerPath player.id
     in
-        a
-            [ class "btn regular"
-            , href path
-            ]
-            [ i [ class "fa fa-pencil mr1" ] [], text "Edit" ]
+    a
+        [ class "btn regular"
+        , href path
+        ]
+        [ i [ class "fa fa-pencil mr1" ] [], text "Edit" ]
