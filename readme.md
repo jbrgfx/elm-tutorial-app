@@ -54,6 +54,6 @@ yarn start
 ```
 Open `http://localhost:8080`
 
-Please note that I have left a bothersome definition inherited from the original in order to make it as easy as possible to combine Elm with the mid-tier postgRest warp app and the postgreSQL backend -- that is, in src/Model.elm the PlayerID alias is set to type string and matched to id in the Player alias.  This means that your postgreSQL datbase table needs to use a text type for the field id (the primary key).
+Please note that I have left a bothersome definition inherited from the original in order to make it as easy as possible to combine Elm with the mid-tier postgRest warp app and the postgreSQL backend -- that is, in src/Model.elm the PlayerID alias is set to type string and matched to id in the Player alias.  This means that your postgreSQL database table needs to use a text type for the field id (the primary key).
 
 This "feature" must have been a compromise caused by using the Javascript JSON backend in the orginal project and keeping the Elm code as simple as possible. If I were doing more than a demo, I would leverage Haskell and Elm's type systems to tranforms mixed types into JSON string data and use an Int type in postgreSQL for the primary key rather than just using strings all the way down from the database to the client.
