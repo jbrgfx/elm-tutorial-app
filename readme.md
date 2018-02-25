@@ -14,11 +14,11 @@ An example Elm single page application built for http://www.elm-tutorial.org/
 yarn
 ```
 
-## This version is 
+## This version:
 
-- An adaptation to fetch PostgreSQL data via postgRest, a haskell warp web app.
+- Is an adaptation to fetch PostgreSQL data via postgRest, a haskell warp web app.
 - The Elm code may contain any supported API call to which the application has been granted privileges in the PostgreSQL database.
-- Elm only needs to REST endpoint -- the request using core-http is simply a query string that meets the PostRest API specs.
+- Elm only needs a REST endpoint -- construct a request using core-http with a query string that meets the PostRest API specs.
 - [read the docs](https://postgrest.com/en/v4.3/api.html) and download the binary.
 
 
