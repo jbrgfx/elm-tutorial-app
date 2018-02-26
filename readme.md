@@ -11,7 +11,7 @@ Depending on where you make the hack, you will get one of three reports: "Nothin
 - [Install Node](https://nodejs.org/en/download/)
 - [Install Yarn](https://yarnpkg.com/)
 
-## CLone this (branch of the tutorial's repo](https://github.com/sporto/elm-tutorial-app/tree/017-05-fetch)
+-- CLone this (branch of the tutorial's repo](https://github.com/sporto/elm-tutorial-app/tree/017-05-fetch)
 
 ## Install dependencies:
 
