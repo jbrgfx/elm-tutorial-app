@@ -3,14 +3,15 @@
 1. Separate frontend from backend development as cleanly, completely
 	and simply as possible.
 
-2. Minimize pain points and get rid of ridiculous abstractions.
+2. Minimize pain points and get rid of complex or ridiculous abstractions.
 
 3. Make refactoring easy and as painless as possible.
 
 4. Popularize and demonstrate those things that make sense.
 
-## Demo:
+<div class="page-break" />
 
+## Demo:
 Ingredients:
 
 	Elm (frontend)
@@ -20,11 +21,9 @@ Ingredients:
 1. Start with Haskell middleware
 [postgrest API](https://postgrest.com/en/v4.3/api.html)
 
-2. explain basic steps in the Db and warp app config
+2. Explain basic steps in the Db and warp app config
 
-3. start postgreSQL
-
-4. explain Db permissions and postgres setup
+3. Explain Db permissions and postgreSQL setup
 
 		create schema, table(s), view(s), SPs, etc.
 		grant usage (require login - in my case no login - anonymous with JWT)
@@ -34,37 +33,28 @@ Ingredients:
 		user specified in the db-uri is also known as the authenticator role
 		supports JWT, OAuth, CORs, Proxy, connection pooling, EKG monitoring
 
+		default postgrest output format is JSON, but also outputs on request
+				text/csv
+				openapi+json
+				octet-stream
 
-		default output format is JSON, but also outputs on request
-			- text/csv
-			- openapi+json
-			- octet-stream
-
+		postgrest.conf
 		db-uri = "postgres://user:pass@host:5432/dbname"
 		db-schema = "api"
 		db-anon-role = "web_anon"
 
-5. start postgREST
+4. Start postgREST in the root directory you untarred the binary
 
-		postgrest ~/Documents/haskell-work/postgrest/postgrest.conf
+		postgrest postgrest.conf
 
-6. explain [Swagger - OpenAPI](http://localhost:3000)
+5. Explain [Swagger - OpenAPI](http://localhost:3000)
 
 	highlight the two terms using find in page: players and todos
 
-		The OpenAPI Specification creates the RESTful contract
-		for your API, detailing all of its resources and operations
-		in a human and machine readable format for easy development,
-		discovery, and integration.
+		You request via queries responses from postgreSQL through
+		the postgrest endpoint using a web client or curl.
 
-	- show
-
-			curl http://localhost:3000/players
-			http://localhost:3000/todos
-			http://localhost:3000/players
-			http://localhost:3000/players?level=gte.7&order=level.desc
-
-7. postgrest code projects on github (some are old, some deprecated)
+6. postgrest code projects on github (some are old, some deprecated)
 
 		Count Languages
 		   35 JavaScript
@@ -78,18 +68,16 @@ Ingredients:
 		    5 Go
 		    5 Ruby
 
-8. Explain elm-tutorial-app
-	- why chosen
-		- Uses the best Elm abstractions (modules) for the purpose
-		- Easy for you to do what I did to get the feel
-		- Demo: refactoring the tutorial to use postgrest and postgresql instead of
-			fake (manually edited JSON ) data and node-based JS API server took
-			20 minutes.
+7. The elm-tutorial-app:
 
-	from the cloned root directly
-		yarn start
+		- Uses powerful Elm packages with which you will want to become familiar
+			if you work with JSON data in Elm;
+		- Is easy for you to do what I did to get the feel of postgrest;
+		- Refactoring the tutorial to use postgrest and postgresql instead of
+			fake (manually edited JSON ) data and node-based JS API server that
+			is in the original tutorial took 20 minutes.
 
-
+## Examine some code
 [elm-tutorial-app-using-PostgREST-API/src/Commands.elm](https://github.com/jbrgfx/elm-tutorial-app-using-PostgREST-API/blob/master/src/Commands.elm)
 ``` elm
 module Commands exposing (..)
@@ -133,10 +121,8 @@ update msg model =
 				. . .
 ```
 
-
 [elm-tutorial-app-using-PostgREST-API/src/Players/List.Elm](https://github.com/jbrgfx/elm-tutorial-app-using-PostgREST-API/blob/master/src/Players/List.elm)
 ``` elm
-
 module Players.List exposing (..)
 
 import Html exposing (..)
@@ -171,20 +157,22 @@ maybeList response =
         RemoteData.Failure error ->
             text (toString error)
 ```
-![layout screenshot](layout.png)
 
-<div class="page-break" />
+So, getting type-safe data out of postgreSQL via postgrest and changing the
+state in the client code is straight-forward.
 
+Rather than show you the client view code in the demo, I want introduce
+another way of eliminating pains points and reducing complexity --
+that is, no framework and no CSS in Elm: just Elm code, all type-safe.
 
-![padding and spacing in a layout](pres-pg03.png)
+You may see this sort of mechanism soon in your favorite front-end language.
 
 <div class="page-break" />
 
 [jbrgfx.github.home](https://jbrgfx.github.io/)
 
-[jbrgfx github io/src/Main.elm](https://github.com/jbrgfx/jbrgfx.github.io/blob/master/src/Main.elm)
+[view code in jbrgfx github io/src/Main.elm](https://github.com/jbrgfx/jbrgfx.github.io/blob/master/src/Main.elm)
 ``` elm
-module Main exposing (..)
 
 import Color exposing (black, darkBlue, lightGrey, white)
 import Element exposing (Element, alignBottom, alignLeft, centerY, column, height, image, layout, newTabLink, padding, paddingEach, paragraph, px, row, text, width)
@@ -232,6 +220,8 @@ view model =
             ]
 ```
 
+<div class="page-break" />
+
 ``` elm
 viewRepos entry =
     paragraph
@@ -252,8 +242,12 @@ viewRepos entry =
         ]
 ```
 
-[Oracle Rest Data Services (ORDs)](https://oracle-base.com/articles/misc/oracle-rest-data-services-ords-installation-on-tomcat)
+<div class="page-break" />
 
+Oracle also has a similar mechanism to negotiate rest API access to Oracle data called
+[Oracle Rest Data Services (ORDs)](https://oracle-base.com/articles/misc/oracle-rest-data-services-ords-installation-on-tomcat)
+Again, the privileges are created and stored in the RDBMS and the mid-tier app is easily configured.
+Then you build and drop a war file into your favorite servlet container and write then client.
 
 ## Benefits of choosing Elm:
 
