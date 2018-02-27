@@ -1,16 +1,9 @@
-# What's next in web dev?
-
-I have spent over two years of early mornings, evenings and wekkends
-trying to discover a simple, quick way of writing web apps.
-
 ## My Overall objectives:
 
 1. Separate frontend from backend development as cleanly, completely
 	and simply as possible.
 
-2. Minimize the numbers of things and technologies a developer needs
-	to reason about
-	-- that is, get rid of pain points and ridiculous abstractions.
+2. Minimize pain points and get rid of ridiculous abstractions.
 
 3. Make refactoring easy and as painless as possible.
 
@@ -71,7 +64,7 @@ Ingredients:
 			http://localhost:3000/players
 			http://localhost:3000/players?level=gte.7&order=level.desc
 
-7. postgrest code projects on github (some are old, some depricated)
+7. postgrest code projects on github (some are old, some deprecated)
 
 		Count Languages
 		   35 JavaScript
