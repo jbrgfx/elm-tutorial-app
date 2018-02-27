@@ -241,6 +241,39 @@ viewRepos entry =
             }
         ]
 ```
+The Element package also enforces WAI accessibility guidelines.
+If, for example, I comment out the label, the program fails to
+compile and reminds me that . . .
+
+```
+-- TYPE MISMATCH --------------------------------- src/Main.elm
+
+The 2nd argument to function `newTabLink` is causing a mismatch.
+
+172|           newTabLink
+173|             [ padding gutter
+174|             , Font.bold
+175|             , Font.size 18
+176|             , Font.underline
+177|             , alignBottom
+178|             , Font.color darkBlue
+179|             , Background.mouseOverColor Color.darkBlue
+180|             , Font.mouseOverColor Color.white
+181|             ]
+182|>            { url = "https://github.com/jbrgfx/" ++ entry
+183|>            -- , label = Element.text entry
+184|>            }
+
+Function `newTabLink` is expecting the 2nd argument to be:
+
+    Element.Link msg
+
+But it is:
+
+    { url : String }
+
+Hint: Looks like a record is missing the `label` field.
+```
 
 <div class="page-break" />
 
