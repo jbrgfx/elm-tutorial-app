@@ -10,7 +10,7 @@ Depending on where you make the hack, you will get one of three reports: "Nothin
 - [Install Elm](http://elm-lang.org/install)
 - [Install Node](https://nodejs.org/en/download/)
 - [Install Yarn](https://yarnpkg.com/)
-- CLone this [branch of the tutorial's repo](https://github.com/sporto/elm-tutorial-app/tree/017-05-fetch)
+- Clone this [branch of the tutorial's repo](https://github.com/sporto/elm-tutorial-app/tree/017-05-fetch)
 
 ## Install dependencies:
 
@@ -39,13 +39,13 @@ A good choice might be 8080.
 
 ## Start PostgreSQL
 
-## Run the Haskell postgRest server 
-- from the binary dir where postgRest can execute:
+## Start the Haskell postgRest server
+- from the terminal in the binary dir where postgRest can execute:
 
   ```
-  $postgrest postgrest.conf
+  postgrest postgrest.conf
    ```
-   
+
 ## Running the application:
 
 In terminal run:
