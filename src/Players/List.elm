@@ -28,7 +28,7 @@ indentStyle =
 
 showQuery =
     div [ indentStyle ]
-        [ Html.text "  Query to postgRest: /players?level=gte.4&amp;order=level.desc,name.asc"
+        [ Html.text "  Query to postgRest: /players?order=level.desc,name.asc"
         ]
 
 
@@ -62,8 +62,8 @@ list players =
                 [ tr []
                     [ th [] [ text "Id" ]
                     , th [] [ text "Name" ]
-                    , th [] [ text "Level" ]
-                    , th [] [ text "Actions" ]
+                    , th [] [ text "Sort" ]
+                    , th [] [ text "View" ]
                     ]
                 ]
             , tbody [] (List.map playerRow players)
@@ -78,12 +78,12 @@ playerRow player =
         , td [] [ text player.name ]
         , td [] [ text (toString player.level) ]
         , td []
-            [ editBtn player ]
+            [ detailsBtn player ]
         ]
 
 
-editBtn : Player -> Html.Html Msg
-editBtn player =
+detailsBtn : Player -> Html.Html Msg
+detailsBtn player =
     let
         path =
             playerPath player.id
@@ -92,4 +92,5 @@ editBtn player =
         [ class "btn regular"
         , href path
         ]
-        [ i [ class "fa fa-pencil mr1" ] [], text "Edit" ]
+        -- [ i [ class "fa fa-pencil mr1" ] [], text "Details" ]
+        [ i [] [], text "Specialties" ]

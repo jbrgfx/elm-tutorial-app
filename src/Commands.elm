@@ -18,7 +18,7 @@ fetchPlayers =
 
 fetchPlayersUrl : String
 fetchPlayersUrl =
-    "http://localhost:3000/players?level=gte.4&amp;order=level.desc,name.asc"
+    "http://localhost:3000/players?order=level.desc,name.asc"
 
 
 savePlayerUrl : PlayerId -> String
@@ -60,6 +60,7 @@ playerDecoder =
         |> required "id" Decode.string
         |> required "name" Decode.string
         |> required "level" Decode.int
+        |> required "specialty" Decode.string
 
 
 playerEncoder : Player -> Encode.Value
@@ -69,6 +70,7 @@ playerEncoder player =
             [ ( "id", Encode.string player.id )
             , ( "name", Encode.string player.name )
             , ( "level", Encode.int player.level )
+            , ( "specialty", Encode.string player.name )
             ]
     in
     Encode.object attributes
